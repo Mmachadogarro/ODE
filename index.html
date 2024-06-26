@@ -1,0 +1,468 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="reference/">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Numerical Solutions to ODEs</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ecuaciones-diferenciales-ordinarias-odes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Numerical Solutions to ODEs" class="md-header__button md-logo" aria-label="Numerical Solutions to ODEs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Numerical Solutions to ODEs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ODE Documents
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Numerical Solutions to ODEs" class="md-nav__button md-logo" aria-label="Numerical Solutions to ODEs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Numerical Solutions to ODEs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    ODE Documents
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    ODE Documents
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliotecas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bibliotecas
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliotecas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bibliotecas
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="ecuaciones-diferenciales-ordinarias-odes">Ecuaciones Diferenciales Ordinarias (ODEs)</h1>
+<h2 id="introduccion">Introducción</h2>
+<p>Consideremos el problema
+\begin{align}
+\frac{{\rm d}x}{{\rm d}t} = \frac{2x}{t}.
+\end{align}
+Esta ecuación puede ser integrada directamente separando variables de forma análitica.</p>
+<p>Por otro lado, el siguiente problema
+\begin{align}
+\frac{{\rm d}x}{{\rm d}t} = \frac{2x}{t} + \frac{3x^2}{t^3},
+\end{align}
+ya no es separable y además de eso, es un problema no lineal (en el sentido de que aparecen potencias no lineales de la variable dependiente). </p>
+<p><strong>Las ecuaciones diferenciales no lineales rara vez se pueden resolver de forma analítica</strong>. Dado que dichas ecuaciones diferenciales aparecen en distintos campos en la ciencia, debemos atacar el problema de forma numérica.</p>
+<p>El problema general que consideraremos es una ecuación diferencial ordinaria sujeta a alguna condición inicial. La forma general está dada por 
+$$
+\frac{\text d x}{\text d t} = f(x, t) \quad \text{con} \quad x(t=0)=x_0.
+$$</p>
+<p>Algunos de los métodos que veremos son aplicables a otras clases de problemas, por ejemplo
+* <span class="arithmatex">\(n\)</span>D: <span class="arithmatex">\(\quad\displaystyle \frac{\text d x_i}{\text d t} = f_i(x_1,\dots{},x_n, t)\quad \text{con}\quad x_i(t=0)=x_{i0}.\)</span>
+* Ordenes mayores, e.g.:
+$$
+\frac{\text d^3 x}{\text d t^3} =f(x, t)\quad \Leftrightarrow \quad \frac{\text d x}{\text d t} = v,\ \frac{\text d v}{\text d t} = a,\ \frac{\text d a}{\text d t}=f.
+$$
+* Conjuntos acoplados de ecuaciones diferenciales</p>
+<h2 id="bibliotecas">Bibliotecas</h2>
+<p>Antes de discutir algoritmos para resolver ODEs, mencionemos las bibliotecas en <code>Python</code> para resolver sistemas. </p>
+<ul>
+<li><code>SciPy</code> contiene dos métodos para atacar el problema ubicados dentro del módulo <code>scipy.integrate</code></li>
+<li><code>odeint</code> es el método clásico de la biblioteca: a pesar de que es poderoso, posee mucha funcionalidad escondida con la cual es difícil controlar el cálculo, sin mencionar que es complicado entender la forma en que los errores son estimados</li>
+<li><code>solve_ivp</code> es el método preferido, dado que nos da mayor control sobre las operaciones realizadas</li>
+<li>En general, el flujo de trabajo es utilizar alguno de estos métodos siempre y cuando no la estimación de errores no sea tan importante</li>
+<li>En muchos casos prácticos, estos métodos contienen muchos cálculos secundarios que pueden hacer la evaluación de una ecuación diferencial muy ineficiente. </li>
+<li>Si el rendimiento de estos métodos no es suficiente, lo mejor es implementar un método que sepamos que se ajusta bien a nuestro problema</li>
+</ul>
+<h1 id="metodo-de-euler">Método de Euler</h1>
+<p>El método de Euler es muy sencillo, se basa en la expansión de Taylor de la función <span class="arithmatex">\(x(t)\)</span>. Tenemos
+$$
+\text{Expansión Taylor} \Rightarrow x(t+h) = x(t) + h\frac{dx}{dt} + \overbrace{ \frac{h^2}{2} \frac{d^2x}{dt^2} } ^{\epsilon} + O(h^3).
+$$
+Esto implica que para avanzar en el tiempo la función por un paso <span class="arithmatex">\(h\)</span>, el cual suponemos que es lo suficientemente pequeño, basta con utilizar la ecuación
+$$
+\boxed{x(t + h) = x(t) + hf(x,t).}
+$$
+El error asociado con la aproximación <strong>está ligado a la cantidad de veces que hagamos la aproximación</strong>, es decir, al número de pasos en el tiempo que utilicemos en nuestra solución. Lo podemos estimar de la siguiente forma
+$$
+\sum\epsilon = \sum_{k=0}^{N-1}\frac{h^2}{2}\left. \frac{d^2x}{dt^2} \right|<em>{x_k, t_k} = \frac{h}{2}\sum</em>{k=0}^{N-1}h\left.\frac{df}{dt}\right|_{x_k, t_k}\
+\approx \frac{h}2\int_a^b\frac{df}{dt}d t = \frac{h}{2}\left[f_b - f_a\right].
+$$
+En la ecuación anterior asumimos que tomamos <span class="arithmatex">\(N = (b-a)/h\)</span> pasos temporales para llegar al punto final.</p>
+<p>Entonces, naturalmente, el error total de aproximación depende <span class="arithmatex">\(h\)</span> linealmente multiplicado por el intervalo en el cual realizamos la integración.</p>
+<ul>
+<li>Para algunas aplicaciones, esto es suficiente. Para otras, necesitamos una mejor aproximación.</li>
+<li>El algoritmo toma la siguiente forma:</li>
+<li>Empezar con <span class="arithmatex">\(t = t_0\)</span>, <span class="arithmatex">\(x = x_0\)</span></li>
+<li>Discretizar el tiempo en pasos temporales de forma equidistante con espaciamiento <span class="arithmatex">\(h\)</span>, donde cada punto en el tiempo está denotado con <span class="arithmatex">\(t_i\)</span></li>
+<li>Para cada punto en el tiempo encontrar <span class="arithmatex">\(x\)</span> utilizando el resultado de la iteración previa: <span class="arithmatex">\(x_i = x_{i-1} + hf(x_{i-1})\)</span></li>
+</ul>
+<h1 id="metodo-de-runge-kutta">Método de Runge-Kutta</h1>
+<p>El método de Euler puede darnos una buena aproximación dependiendo del problema y de la cantidad de iteraciones que necesitamos en nuestra solución. En general, con el método de Euler, un cálculo que es el doble más preciso requiere el doble de recursos computacionales.</p>
+<p>El método de Runge-Kutta es en realidad una familia de métodos de distinto orden que proveen una mejor aproximación sin la necesidad de considerar ordenes más altos en la expansión de Taylor del método de Euler. Este último punto se quiere evitar, dado que es complicado conocer la derivada de la función que estamos evaluando en el lado derecho de la ODE.</p>
+<div>
+<img src="Fig1.png" width="550"/>
+</div>
+
+<h3 id="metodo-de-runge-kutta-2rm-do-orden-rk2">Método de Runge-Kutta 2<span class="arithmatex">\(^{\rm do}\)</span> Orden (RK2)</h3>
+<p>La idea del método RK2 es utilizar el punto medio para evaluar el método de Euler, como se indica en la figura. Mientras que el método de Euler se aplica en el punto <span class="arithmatex">\(t\)</span> para evaluar la derivada para aproximar la función en el punto <span class="arithmatex">\(x = t + h\)</span>, el método RK2 utiliza el punto medio <span class="arithmatex">\(t + h/2\)</span>. </p>
+<p>De esta forma, se alcanza una mejor aproximación para el mismo valor de <span class="arithmatex">\(h\)</span>.</p>
+<p>El método se deriva aplicando la serie de Taylor alrededor del punto medio <span class="arithmatex">\(t + h/2\)</span> para obtener el valor de la función en el punto <span class="arithmatex">\(x(t + h)\)</span>. Tenemos
+$$
+x(t + h) = x\left(t + \frac{h}{2}\right) + \frac{h}{2}\left(\frac{{\rm d}x}{{\rm d}t}\right)<em>{t+h/2} + \frac{h^2}{8}\left(\frac{{\rm d}^2x}{{\rm d}t^2}\right)</em>{t+h/2} + O(h^3).
+$$
+Similarmente, podemos hacer lo mismo para <span class="arithmatex">\(x(t)\)</span>, tal que
+$$
+x(t) = x\left(t + \frac{h}{2}\right) - \frac{h}{2}\left(\frac{{\rm d}x}{{\rm d}t}\right)<em>{t+h/2} + \frac{h^2}{8}\left(\frac{{\rm d}^2x}{{\rm d}t^2}\right)</em>{t+h/2} + O(h^3).
+$$
+Al sustraer ambas ecuaciones obtenemos
+$$
+x(t + h) = x(t) + h\left(\frac{{\rm d}x}{{\rm d}t}\right)_{t+h/2} + O(h^3)
+$$
+Finalmente,
+$$
+\boxed{x(t + h) = x(t) + hf[x(t + h/2), t + h/2] + O(h^3)}.
+$$
+El término de orden <span class="arithmatex">\(h^2\)</span> desaparece y nuestra aproximación tiene un error de orden <span class="arithmatex">\(h^3\)</span>. Recordemos que incrementar el orden del error por un orden de magnitud es muy beneficioso a nivel computacional. </p>
+<p>El único problema es que requerimos conocer el valor de la función en el punto medio <span class="arithmatex">\(x(t + h/2)\)</span>, el cual desconocemos.</p>
+<p>Para aproximar este valor utilizamos el método de Euler con un paso <span class="arithmatex">\(h/2\)</span>, <span class="arithmatex">\((x + h/2) = x(t) + \frac{h}{2}f(x,t)\)</span>. De esta manera, obtenemos las ecuaciones del método RK2:
+* <span class="arithmatex">\(k_1 = hf(x,t),\)</span>
+* <span class="arithmatex">\(k_2 = hf\left(x + \frac{k_1}{2},t + \frac{h}{2}\right)\)</span>
+* <span class="arithmatex">\(x(t + h) = x(t) + k_2\)</span>
+El error de aproximación de cada paso es de orden <span class="arithmatex">\(O(h^3)\)</span>, mientras que el error global (con un análisis similar al que hicimos con el método de Euler) es de order <span class="arithmatex">\(O(h^2)\)</span>. </p>
+<p>Cabe recalcar que al utilizar el método de Euler para la primera parte de la aproximación, el error también es de <span class="arithmatex">\(O(h^3)\)</span> y por ende el error de aproximación se mantiene de <span class="arithmatex">\(O(h^3)\)</span>.</p>
+<h3 id="metodo-de-runge-kutta-de-4rm-to-orden">Método de Runge-Kutta de 4<span class="arithmatex">\(^{\rm to}\)</span> Orden</h3>
+<p>La metodología anterior se puede aplicar aún a más puntos ubicados entre <span class="arithmatex">\(x(t)\)</span> y <span class="arithmatex">\(x(t + h)\)</span> realizando expansiones de Taylor. De esta forma se pueden agrupar términos de orden <span class="arithmatex">\(h^3\)</span>, <span class="arithmatex">\(h^4\)</span>, etc; para cancelar dichas expresiones. </p>
+<p>El problema de hacer esto es que las expresiones se vuelven más complicadas conforme incrementamos el orden de aproximación. En general, la regla de dedo es que el <span class="arithmatex">\(4^{\rm to}\)</span> orden corresponde al mejor compromiso entre complejidad y error de aproximación. Este método es el más utilizado comunmente para resolver ODEs. </p>
+<p>El álgebra para encontrar las ecuaciones de <span class="arithmatex">\(4^{\rm to}\)</span> orden es tediosa, pero el resultado final es
+* <span class="arithmatex">\(k_1 = hf(x, t)\)</span>,
+* <span class="arithmatex">\(k_2 = hf\left(x + \frac{k_1}{2}, t+\frac{h}2\right)\)</span>,
+* <span class="arithmatex">\(k_3 = hf\left(x + \frac{k_2}{2}, t+\frac{h}2\right)\)</span>,
+* <span class="arithmatex">\(k_4 = hf\left(x + k_3, t + h \right)\)</span>,
+* <span class="arithmatex">\(x(t+h) = x(t) + \frac{1}{6}(k_1 + 2 k_2 + 2k_3 + k_4)\)</span>.</p>
+<p>Para la mayoría de aplicaciones, el método RK4 es el método de-facto para obtener soluciones. Es fácil de programar y devuelve resultados precisos. </p>
+<p>El error de aproximación es <span class="arithmatex">\(O(h^5)\)</span>, mientras que el error global es aproximadamente del orden <span class="arithmatex">\(O(h^4)\)</span>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
